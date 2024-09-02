@@ -1,6 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
-from typing import Dict, Optional, Union
-
+from typing import Dict, Optional, Union, List
 
 from ..auth import get_current_user
 from ..models import NoteCreate
@@ -45,7 +44,7 @@ async def create_note(
 
 
 @router.get("/")
-async def list_notes(current_user: Dict = Depends(get_current_user)) -> list[str]:
+async def list_notes(current_user: Dict = Depends(get_current_user)) -> List[Dict[str, str]]:
     """
     Получает список заметок для текущего пользователя.
 

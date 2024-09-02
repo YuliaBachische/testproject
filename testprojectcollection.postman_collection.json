@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "7ff0f5c1-7c77-4eb3-a18d-0032d1ab7823",
+		"name": "testprojectcollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38049358"
+	},
+	"item": [
+		{
+			"name": "get a message about user",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/users/me?username=johndoe&password=testpassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"users",
+						"me"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "johndoe"
+						},
+						{
+							"key": "password",
+							"value": "testpassword"
+						}
+					]
+				},
+				"description": "**Method:** `GET`\n\n**Description:**\n\n- Этот запрос возвращает информацию о текущем пользователе на основе предоставленных учетных данных.\n    \n\n**Headers:**\n\n- Content-Type: `application/json`\n    \n\n**Body (JSON):**\n\n``` json\n{\n  \"username\": \"johndoe\",\n  \"password\": \"testpassword\"\n}\n\n ```\n\n**Response:**\n\n- Status Code: `200 OK`\n    \n- Body:\n    \n\n``` json\n{\n  \"username\": \"johndoe\"\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Login endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"login"
+					]
+				},
+				"description": "**URL:** `http://127.0.0.1:8000/login`\n\n**Method:** `POST`\n\n**Description:**\n\n- Этот запрос используется для аутентификации пользователя. Он принимает учетные данные пользователя и возвращает их с добавленным id и сообщением об успешном выполнении логина.\n    \n\n**Headers:**\n\n- Content-Type: `application/json`\n    \n\n**Body (JSON):**\n\n``` json\n{\n  \"username\": \"johndoe\",\n  \"password\": \"testpassword\"\n}\n\n ```\n\n**Response:**\n\n- Status Code: `200 OK`\n    \n- Body:\n    \n\n```\n{\n    \"message\": \"Login successful\",\n    \"user\": {\n        \"id\": \"1\",\n        \"username\": \"johndoe\",\n        \"password\": \"testpassword\"\n    }\n}\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "List User Notes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes?username=johndoe&password=testpassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "johndoe"
+						},
+						{
+							"key": "password",
+							"value": "testpassword"
+						}
+					]
+				},
+				"description": "**URL:** `http://127.0.0.1:8000/notes`\n\n**Method:** `GET`\n\n**Description:**\n\n- Этот запрос возвращает список заметок, связанных с текущим пользователем.\n    \n\n**Headers:**\n\n- Content-Type: `application/json`\n    \n\n**Parameters:**\n\n- `username` (Query): Имя пользователя\n    \n- `password` (Query): Пароль пользователя\n    \n\n**Response:**\n\n- Status Code: `200 OK`\n    \n- Body:\n    \n\n``` json\n[\n  {\n    \"id\": \"1\",\n    \"user_id\": \"johndoe\",\n    \"title\": \"Note 1\",\n    \"content\": \"Content of Note 1\"\n  },\n  {\n    \"id\": \"2\",\n    \"user_id\": \"johndoe\",\n    \"title\": \"Note 2\",\n    \"content\": \"Content of Note 2\"\n  }\n]\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a New Note",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/notes?username=johndoe&password=testpassword",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"notes"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "johndoe"
+						},
+						{
+							"key": "password",
+							"value": "testpassword"
+						}
+					]
+				},
+				"description": "**URL:** `http://127.0.0.1:8000/notes?username=johndoe&password=testpassword`\n\n**Method:** `POST`\n\n**Description:**\n\n- Этот запрос создает новую заметку для текущего пользователя. Запрос проверяет орфографию текста перед добавлением заметки.\n    \n\n**Headers:**\n\n- Content-Type: `application/json`\n    \n\n**Parameters:**\n\n- `username` (Query): Имя пользователя\n    \n- `password` (Query): Пароль пользователя\n    \n\n**Body (JSON):**\n\n``` json\n{\n  \"title\": \"New Note\",\n  \"content\": \"This is the content of the new note\"\n}\n\n ```\n\n**Response:**\n\n- Status Code: `200 OK`\n    \n- Body (если есть орфографические ошибки):\n    \n\n``` json\n{\n    \"message\": \"Note added with spelling corrections\",\n    \"errors\": [\n        {\n            \"pos\": 0,\n            \"len\": 8,\n            \"replacement\": \"записка 8\"\n        },\n        {\n            \"pos\": 12,\n            \"len\": 5,\n            \"replacement\": \"змееед\"\n        }\n    ]\n}\n\n ```\n\n- Body (если ошибок нет):\n    \n\n``` json\n{\n  \"message\": \"Note added successfully\"\n}\n\n ```"
+			},
+			"response": []
+		}
+	]
+}

@@ -3,8 +3,8 @@ from typing import List, Dict, Optional
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
-USERS_CSV = 'C:/Users/USER/PycharmProjects/pythonProject3/app/data/users.csv'
-NOTES_CSV = 'C:/Users/USER/PycharmProjects/pythonProject3/app/data/notes.csv'
+USERS_CSV = 'app/data/users.csv'
+NOTES_CSV = 'app/data/notes.csv'
 
 
 def read_csv(file_path: str) -> List[Dict[str, str]]:

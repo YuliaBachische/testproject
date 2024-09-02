@@ -1,14 +1,10 @@
 import csv
 import logging
-from typing import List, Dict, Union, Tuple
-
-import requests
-
-from app.crud import read_csv, write_csv
+from app.crud import write_csv, read_csv
 
 logging.basicConfig(level=logging.DEBUG)
 
-NOTES_CSV = 'C:/Users/USER/PycharmProjects/pythonProject3/app/data/notes.csv'
+NOTES_CSV = 'app/data/notes.csv'
 
 
 def read_notes_from_csv() -> list[str]:
